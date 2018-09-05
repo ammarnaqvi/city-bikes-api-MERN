@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchBar = props => {
   return (
-    <div className="input-group col-md-8 input-group-lg">
+    <div className="input-group col-md-10 input-group-lg mx-5">
       <div className="input-group-prepend">
         <button
           type="button"
@@ -12,7 +12,17 @@ const SearchBar = props => {
           Search
         </button>
       </div>
-      <input type="text" className="form-control" placeholder="City" />
+      <select
+        onChange={e => props.Select(e)}
+        className="form-control"
+        placeholder="City"
+      >
+        {props.Cities.map(city => (
+          <option key={city.id} value={city.id}>
+            {city.name}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

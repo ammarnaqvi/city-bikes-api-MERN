@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import SearchBar from "./../Components/SearchBar";
-import FreeBikesResultTable from "./../Components/FreeBikesResultTable";
+import FreeParkingResultTable from "./../Components/FreeParkingResultTable";
 
-class SearchForBikes extends Component {
+class SearchForParking extends Component {
   constructor(props) {
     super(props);
     this.state = { cities: [], selectedCity: "", bikeStations: [] };
@@ -24,9 +24,9 @@ class SearchForBikes extends Component {
   };
 
   search = async () => {
-    console.log(`/api/free-bikes?cityId=${this.state.selectedCity}`);
+    console.log(`/api/free-parking?cityId=${this.state.selectedCity}`);
     const response = await fetch(
-      `/api/free-bikes?cityId=${this.state.selectedCity}`
+      `/api/free-parking?cityId=${this.state.selectedCity}`
     );
     const bikeStations = await response.json();
 
@@ -47,10 +47,10 @@ class SearchForBikes extends Component {
           Select={this.select}
           Search={this.search}
         />
-        <FreeBikesResultTable BikeStations={this.state.bikeStations} />
+        <FreeParkingResultTable BikeStations={this.state.bikeStations} />
       </div>
     );
   }
 }
 
-export default SearchForBikes;
+export default SearchForParking;
